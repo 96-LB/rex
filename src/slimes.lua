@@ -13,8 +13,14 @@ RiftSchema.components {
     },
 }
 
-RiftEvent.ObjectHit.add("knockbackDelay", {order = "knockback", filter = "rex_knockback"}, function (ev)
+RiftEvent.ObjectHit.add("knockbackDelay", { order = "knockback", filter = "rex_knockback" }, function (ev)
     ev.entity.subDelayOverride = { steps = RiftStep.SUBDIV * ev.entity.rex_knockback.delay }
+end)
+
+RiftEvent.ObjectHit.add("facingMirrorOnBeatFix", { order = "knockback", filter = "facingMirrorOnBeat" }, function (ev)
+    ev.entity.facing = { x = -ev.entity.facing.x }
+    ev.entity.facingMirrorOnBeat = false
+    ev.entity.facingMirrorOnHit = {}
 end)
 
 local function Slime(slime)

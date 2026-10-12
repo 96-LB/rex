@@ -1,12 +1,12 @@
 {
-    "namespace": "rex",
-    "displayName": "REX",
-    "version": "0.1.0",
-    "description": "Adds additional monster types and extends vanilla enemies with additional variants.",
-    "author": "96 LB",
-    "dependencies": { "KatieLib": "1.0.3" },
-    "api": { "scriptPath": "" },
-    "icon": "Icon.png",
-    "banner": "Banner.png",
-    "name": "rex"
+	"namespace": "rex",
+	"displayName": "REX",
+	"version": "0.1.1",
+	"description": "Adds additional monster types and extends vanilla enemies with additional variants.",
+	"author": "96 LB",
+	"dependencies": {"KatieLib":"1.0.3"},
+	"api": {"scriptPath":""},
+	"icon": "Icon.png",
+	"banner": "Banner.png",
+	"name": "rex"
 }

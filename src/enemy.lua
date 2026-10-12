@@ -50,6 +50,12 @@ local ANIMATIONS = {
         editor = "editorAnimationDeath",
         katie = "customChoreoAnimationDeath",
         default = "x"
+    },
+    wrap = {
+        katie = "customChoreoAnimationWrap",
+    },
+    portal = {
+        katie = "customChoreoAnimationPortal",
     }
 }
 
@@ -75,7 +81,7 @@ local function loadCustomAssets(entity)
         end
         
         local animation = customAssets[animationName] or { }
-        local frames = animation.frames or { { t = 0, sprite = animationData.default } }
+        local frames = animation.frames or animationData.default and { { t = 0, sprite = animationData.default } }
         local duration = animation.duration or 1
         
         if animationData.editor then
@@ -295,6 +301,12 @@ M.DEFAULT_DEATH = {
         { t = 0, x = 0.21, y = 0.21 },
         { t = 0.15, x = 0.315, y = 0.315 },
     }
+}
+
+M.DEFAULT_FADE = {
+    { t = 0, r = 1, g = 1, b = 1, a = 1},
+    { t = 0.25, r = 1, g = 1, b = 1, a = 0},
+    { t = 0.5, r = 1, g = 1, b = 1, a = 1 }
 }
 
 return M

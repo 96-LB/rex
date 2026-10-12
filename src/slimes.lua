@@ -24,6 +24,27 @@ RiftEvent.ObjectHit.add("facingMirrorOnBeatFix", { order = "knockback", filter =
 end)
 
 local function Slime(slime)
+    local MOVE = {
+        frames = {
+            { t = 0, sprite = 3 },
+            { t = 28 / 60, sprite = 2 },
+            { t = 30 / 60, sprite = 0 },
+        },
+        scales = Enemy.DEFAULT_SCALE
+    }
+    
+    local HIT = {
+        duration = slime.delay or 1,
+        frames = MOVE.frames,
+        scales = MOVE.scales
+    }
+    
+    local WRAP = {
+        frames = MOVE.frames,
+        scales = MOVE.scales,
+        colors = Enemy.DEFAULT_FADE
+    }
+    
     local entity = {
         name = slime.name,
         friendlyName = { name = slime.friendlyName },
@@ -39,24 +60,11 @@ local function Slime(slime)
         rex_customAssets = {
             name = slime.spriteName,
             default = { ppu = 100, pivot = { x = 0.5, y = 0.28 } },
-            movement = {
-                frames = {
-                    { t = 0, sprite = 3},
-                    { t = 0.46666667, sprite = 2},
-                    { t = 0.5, sprite = 0 },
-                },
-                scales = Enemy.DEFAULT_SCALE
-            },
-            hit = {
-                duration = slime.delay or 1,
-                frames = {
-                    { t = 0, sprite = 3},
-                    { t = 0.46666667, sprite = 2},
-                    { t = 0.5, sprite = 0 },
-                },
-                scales = Enemy.DEFAULT_SCALE
-            },
-            death = Enemy.DEFAULT_DEATH
+            movement = MOVE,
+            hit = HIT,
+            death = Enemy.DEFAULT_DEATH,
+            wrap = WRAP,
+            portal = WRAP,
         },
     }
     Enemy.new(entity)

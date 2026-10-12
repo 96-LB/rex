@@ -34,7 +34,15 @@ local function Devil(devil)
                 },
                 scales = Enemy.DEFAULT_SCALE
             },
-            death = Enemy.DEFAULT_DEATH
+            death = Enemy.DEFAULT_DEATH,
+            wrap = {
+                scales = Enemy.DEFAULT_SCALE,
+                colors = Enemy.DEFAULT_FADE,
+            },
+            portal = {
+                scales = Enemy.DEFAULT_SCALE,
+                colors = Enemy.DEFAULT_FADE,
+            }
         },
     }
     Enemy.new(entity)

@@ -4,6 +4,28 @@ local Enemy = require "rex.src.enemy"
 
 
 local function Spider(spider)
+    local MOVE = {
+        frames = {
+            { t = 0, sprite = 29 },
+            { t = 29 / 60, sprite = 15 },
+            { t = 30 / 60, sprite = 0 },
+            { t = 59 / 60, sprite = 15 },
+        },
+        scales = Enemy.DEFAULT_SCALE,
+        positions = {
+            { t = 28 / 60, x = 0, y = 0 },
+            { t = 30 / 60, x = 0, y = 0.15 },
+            { t = 55 / 60 },
+        }
+    }
+    
+    local WRAP = {
+        frames = MOVE.frames,
+        scales = MOVE.scales,
+        positions = MOVE.positions,
+        colors = Enemy.DEFAULT_FADE
+    }
+    
     local entity = {
         name = spider.name,
         friendlyName = { name = spider.friendlyName },
@@ -20,21 +42,10 @@ local function Spider(spider)
         rex_customAssets = {
             name = spider.spriteName,
             default = { ppu = 110, pivot = { x = 0.4, y = 0.05 } },
-            movement = {
-                frames = {
-                    { t = 0, sprite = 29 },
-                    { t = 29 / 60, sprite = 15 },
-                    { t = 30 / 60, sprite = 0 },
-                    { t = 59 / 60, sprite = 15 },
-                },
-                scales = Enemy.DEFAULT_SCALE,
-                positions = {
-                    { t = 28 / 60, x = 0, y = 0 },
-                    { t = 30 / 60, x = 0, y = 0.15 },
-                    { t = 55 / 60 },
-                }
-            },
-            death = Enemy.DEFAULT_DEATH
+            movement = MOVE,
+            death = Enemy.DEFAULT_DEATH,
+            wrap = WRAP,
+            portal = WRAP
         },
     }
     Enemy.new(entity)
